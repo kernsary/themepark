@@ -1,5 +1,7 @@
 package people;
 
+import attractions.Attraction;
+import attractions.Park;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,5 +29,17 @@ public class VisitorTest {
     @Test
     public void hasMoney() {
         assertEquals(40.0, visitor.getMoney(), 0.1);
+    }
+
+    @Test
+    public void startsWithNoAttractionsVisited(){
+        assertEquals(0, visitor.getVisitedAttractions().size());
+    }
+
+    @Test
+    public void canAddVisitedAttraction(){
+        Park park = new Park("Birdsong", 9);
+        visitor.addAttraction(park);
+        assertEquals(1, visitor.getVisitedAttractions().size());
     }
 }

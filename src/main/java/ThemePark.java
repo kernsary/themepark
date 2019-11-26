@@ -1,8 +1,6 @@
-import attractions.Dodgems;
-import attractions.Park;
-import attractions.Playground;
-import attractions.RollerCoaster;
+import attractions.*;
 import behaviours.IReviewed;
+import people.Visitor;
 import stalls.CandyflossStall;
 import stalls.IceCreamStall;
 import stalls.ParkingSpot;
@@ -12,24 +10,10 @@ import java.util.ArrayList;
 
 public class ThemePark {
 
-//    private Dodgems dodgems;
-//    private Park park;
-//    private Playground playground;
-//    private RollerCoaster rollerCoaster;
-//    private CandyflossStall candyflossStall;
-//    private IceCreamStall iceCreamStall;
-//    private TobaccoStall tobaccoStall;tobaccoStall
     private ArrayList<IReviewed> reviewedItems;
 
     public ThemePark(){
-//        this.dodgems = new Dodgems("Crunk", 6);
-//        this.park = new Park("Birdsong", 9);
-//        this.playground = new Playground("Mania", 4);
-//        this.rollerCoaster = new RollerCoaster("Whitey", 7);
-//        this.candyflossStall = new CandyflossStall("GooMaster", "Orville Fillingsgone", ParkingSpot.A1, 3);
-//        this.iceCreamStall = new IceCreamStall("PokyHats", "Icy Izzy", ParkingSpot.A4, 8);
-//        this.tobaccoStall = new TobaccoStall("LungBusters", "Horace Hoarse", ParkingSpot.A2, 5);
-        this.reviewedItems = new ArrayList<IReviewed>();
+        this.reviewedItems = new ArrayList<>();
     }
 
     public void addItem(IReviewed item){
@@ -38,6 +22,11 @@ public class ThemePark {
 
     public ArrayList<IReviewed>getAllReviewed(){
         return reviewedItems;
+    }
+
+    public void visit(Visitor visitor, Attraction attraction){
+        attraction.increaseVisitCount();
+        visitor.addAttraction(attraction);
     }
 
 }
