@@ -10,6 +10,8 @@ import stalls.IceCreamStall;
 import stalls.ParkingSpot;
 import stalls.TobaccoStall;
 
+import java.util.HashMap;
+
 import static org.junit.Assert.assertEquals;
 
 public class ThemeParkTest {
@@ -53,5 +55,21 @@ public class ThemeParkTest {
         themePark.visit(visitor, dodgems);
         assertEquals(1, visitor.getVisitedAttractions().size());
         assertEquals(1, dodgems.getVisitCount());
+    }
+
+    @Test
+    public void canGetReviews(){
+        HashMap<String, Integer> reviews = themePark.getReviews();
+        int crunkRating = reviews.get("Crunk");
+        assertEquals(7, reviews.size());
+//        System.out.println(crunkRating);
+        assertEquals(6, crunkRating);
+    }
+
+    @Test
+    public void visitor16AndTallEnoughCanGoToFiveItems(){
+        Visitor visitor = new Visitor(16, 1.7, 50);
+//        System.out.println(themePark.getAllAllowedFor(visitor));
+        assertEquals(5, themePark.getAllAllowedFor(visitor).size());
     }
 }
